@@ -27,3 +27,14 @@ alter table employee_payroll add gender varchar(20);
 update employee_payroll set gender = 'M' where name = 'Bill' or name = 'Charlie';
 
 update employee_payroll set gender = 'F' where name = 'Terisa';
+
+select gender, sum(salary) from employee_payroll group by gender;
+
+alter table employee_payroll add phoneNo varchar(15);
+
+alter table employee_payroll add department varchar(50);
+
+select max(salary) from employee_payroll;
+select avg(salary) from employee_payroll;
+select min(salary) from employee_payroll;
+select count(salary) from employee_payroll;
