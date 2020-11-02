@@ -20,4 +20,10 @@ select * from employee_payroll;
 
 select salary from employee_payroll where name = 'Bill';
 
-select * from employee_payroll where start between '2018-01-01' and GETDATE()
+select * from employee_payroll where start between '2018-01-01' and GETDATE();
+
+alter table employee_payroll add gender varchar(20);
+
+update employee_payroll set gender = 'M' where name = 'Bill' or name = 'Charlie';
+
+update employee_payroll set gender = 'F' where name = 'Terisa';
