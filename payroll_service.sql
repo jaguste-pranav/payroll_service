@@ -43,30 +43,5 @@ select count(salary) from employee_payroll;
 
 insert into employee_payroll values('Billy', 150000.00, '2018-01-05', 'M', '4545454545', 'R&D', 'Pune');
 
+alter table employee_payroll add deduction money,taxable_pay money,income_tax money,net_pay money;
 
-create table Emp_Payroll
-(
-EId int not null FOREIGN KEY REFERENCES employee_payroll(id),
-BasicPay money not null,
-Deduction money not null,
-TaxablePay money not null,
-IncomeTax money not null,
-NetPay money not null,
-)
-
-Insert into Emp_Payroll values
-(1,35000, 7000,15000,1000,14000),
-(2,75000, 4000,24000,3000,21000),
-(3,26000, 10000,30000,5000,25000);
-
-select * from Emp_Payroll
-
-select Gender,SUM(BasicPay) as SUM,
-AVG(BasicPay) as AVG, MIN(BasicPay) as MIN,
-MAX(BasicPay) as MAX from employee_payroll INNER JOIN Emp_Payroll 
-ON employee_payroll.id = Emp_Payroll.EId GROUP BY Gender;
-
-select BasicPay from Emp_Payroll INNER JOIN employee_payroll ON Emp_Payroll.EId = employee_payroll.id where name = 'Bill';
-
-select employee_payroll.id ,name, department ,BasicPay from employee_payroll
-INNER JOIN  Emp_Payroll ON employee_payroll.id = Emp_Payroll.EId
